@@ -17,12 +17,12 @@ M.project_finder = function(opts, projects)
   -- Loop over all of the projects and find the maximum length of
   -- each of the keys
   for _, project in pairs(projects) do
-    if display_type == 'full' then
-      project.display_path = '[' .. project.path .. ']'
+    if display_type == 'minimal' then
+      project.display_path = ''
     elseif display_type == 'two-segment' then
       project.display_path = '[' .. string.match(project.path, '([^/]+/[^/]+)/?$') .. ']'
     else
-      project.display_path = ''
+      project.display_path = '[' .. project.path .. ']'
     end
     local project_path_exists = Path:new(project.path):exists()
     if not project_path_exists then
@@ -44,7 +44,7 @@ M.project_finder = function(opts, projects)
   local make_display = function(project)
     return displayer {
       { project.title },
-      { project.workspace },
+      -- { project.workspace },
       { project.display_path }
     }
   end
