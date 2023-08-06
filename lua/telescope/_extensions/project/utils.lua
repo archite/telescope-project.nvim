@@ -2,10 +2,12 @@ local Path = require('plenary.path')
 
 local M = {}
 
+local data_dir = vim.g.projects_dir or vim.fn.stdpath("data")
+
 -- The file path to telescope projects
-M.telescope_projects_file = vim.fn.stdpath('data') .. '/telescope-projects.txt'
+M.telescope_projects_file = data_dir .. '/telescope-projects.txt'
 -- The file path to telescope workspaces
-M.telescope_workspaces_file = vim.fn.stdpath('data') .. '/telescope-workspaces.txt'
+M.telescope_workspaces_file = data_dir .. '/telescope-workspaces.txt'
 
 -- Initialize file if does not exist
 M.init_files = function()
